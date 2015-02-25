@@ -48,7 +48,7 @@
 			<div class="info">
 					<a href="/dev/{{$data->userName}}"><% article.user %></a>
 			</div>
-			<div class="content wrtie-area" ng-model="article.content" contenteditable="false"></div>
+			<article class="content wrtie-area" ng-model="article.content" contenteditable="false"></article>
 			<div class="bottom-bar">
 				<div class="f-left">
 					<a href="http://pgmr.co/{{$data->slug}}" class="gray" id="copyLink" data-clipboard-text="http://pgmr.co/{{$data->slug}}">pgmr.co/{{$data->slug}}</a>
