@@ -29,6 +29,7 @@ Route::post('api/v2/follow/{user_id}', 'ApiController@follow');
 Route::post('api/v2/unfollow/{user_id}', 'ApiController@unfollow');
 Route::get('api/v2/user/{user_id?}', 'ApiController@user');
 Route::get('api/v2/article/{article_id}', 'ApiController@collect');
+Route::get('api/v2/feed/{view}/{page?}', 'ApiController@feed');
 Route::get('api/v2/articles/{user_id?}', 'ApiController@articles');
 Route::get('api/v2/content/{article_id}', 'ApiController@content');
 Route::get('api/v2/enjoys/{user_id?}', 'ApiController@enjoys');

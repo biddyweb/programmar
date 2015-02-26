@@ -1,32 +1,48 @@
 //Fonts
-$font-family-sans-serif: 'Karla', sans-serif;
+$primary-font: "Karla", sans-serif;
+$secondary-font: "Source Code Pro", sans-serif;
+$font-family-sans-serif: $primary-font;
 
-$font-size-base: 15px;
-$font-size-h1: 24px;
+//Font sizes
+$font-size-base: 16px;
+$font-size-smaller: 15px;
+$font-size-h1: 18px;
 
-//Wrapper
-$grid-gutter-width: 30px;
-$container-desktop: (700px + $grid-gutter-width);
-$container-large-desktop: (700px + $grid-gutter-width);
-$container-tablet: (600px + $grid-gutter-width);
+//Font weights
+$font-weight-regular: 400;
+$font-weight-bold: 700;
+$font-weight-medium: 600;
+
+//Container
+$wrapper-width: 950px;
+$sidebar-width: 100px;
+$content-width: 600px;
+$expanded-info-width: 300px;
+
+//Margins
+$horizontal-margin: 75px;
+$vertical-margin: 100px;
 
 //Colors
 $gray-lighter: #EFEFEF;
 $gray-light: #F7F7F7;
 $gray: #999;
-$gray-dark: #606063;
 $gray-darker: #333;
-
-$brand-primary: #55c38e;
+$brand-primary: #29B873;
 $brand-danger: #DF4931;
+$highfive-light: #FFF5CE;
+$highfive-dark: #D9B010;
 
+//Input fields
 $input-color-placeholder: #C7C7C8;
 
-//Partials
-$user-image-radius: 50%;
-$border-radius-base: 3px;
+//Logo
+$logo-height: 12px;
+$logo-width: 15px;
 
-$jumbotron-bg: $gray-darker;
+//Border radius
+$user-image-radius: 50%;
+$border-radius-base: 2px;
 
 //Navigation bar
 $navbar-height: 30px;

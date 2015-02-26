@@ -1,133 +1,69 @@
-aside.sidebar {
-	width: 200px;
-	text-align: right;
-	top: 0px;
-	position: absolute;
-	left: auto;
-	margin-left: -275px;
-
-	&.fixed {
-		position: fixed !important;
-		top: 75px;
-	}
-
-	&.hack {
-		top: 180px;
-		&.fixed {
-			position: fixed !important;
-			top: 255px;
-		}
-	}
-
-	.options {
-		margin-top: 35px;
-	}
-
-	a {
-		@extend .Text-Regular;
-		display: block;
+//Side bar which always appears on the left
+.sidebar {
+	//Logo section
+	.logo-container {
 		text-align: right;
-		line-height: 28px;
-		outline: none;
-		border: none;
-		color: $gray;
-		font-size: 15px;
+		margin-bottom: 50px;
 
-		&:hover, &.active {
-			color: $gray-darker;
+		.logo {
+			text-indent: -9999em;
+			font-size: 0px;
+			width: $logo-width;
+			height: $logo-height;
+			@include background-img("/img/logo.svg", $logo-width $logo-height);
+			@include inline-block();
 		}
 
-		&.active {
-			@extend .Text-Bold;
-		}
+		.version {
+			font-family: $secondary-font;
+			font-weight: $font-weight-medium;
+			background-color: $gray-light;
+			color: $gray;
+			border-radius: $border-radius-base;
+			font-size: 9px;
+			padding: 2px 7px;
+			@include inline-block();
 
-		&.brand-primary {
-			color: $brand-primary;
 			&:hover {
-				color: darken($brand-primary, 10%);
+				color: $gray;
+				background-color: darken($gray-light, 2%);
 			}
 		}
+	}
 
-		&.brand-danger {
-			margin-top: 20px;
-			color: lighten($brand-danger, 20%);
-			&:hover {
-				color: $brand-danger;
-			}
-		}
+	//Navigation section
+	nav {
+		ul {
+			list-style: none;
+			margin: 25px 0px 0px 0px;
+			padding: 0px;
 
-		&.btn {
-			@extend .inline-block;
-			width: 100px;
-			color: #fff !important;
-			padding: 5px 0px;
-			font-size: 14px;
-			text-align: center;
-			box-sizing:border-box;
+			li {
+				list-style: none;
+				margin: 0px 0px 5px 0px;
+				padding: 0px;
+				text-align: right;
 
-			&.brand-primary {
-				background: $brand-primary;
-				&:hover {
-					background: darken($brand-primary, 3%);
+				a {
+					color: $gray;
+					font-weight: $font-weight-regular;
+					font-size: $font-size-smaller;
+
+					&:hover, &.active {
+						color: $gray-darker;
+					}
+
+					&.active {
+						font-weight: $font-weight-bold;
+					}
+
+					&.brand-primary {
+						color: $brand-primary;
+						&:hover {
+							color: darken($brand-primary, 2%);
+						}
+					}
 				}
-			}
-		}
-	}
-
-	.btn-container {
-		margin-bottom: 20px;
-		text-align: right;
-
-		&.push {
-			margin-top: 20px;
-		}
-	}
-}
-
-
-.right-container {
-	width: 250px;
-
-	.overflow-container {
-		height: 300px;
-		overflow: auto;
-
-		&::-webkit-scrollbar {
-		    width: 3px;
-		}
-
-		&::-webkit-scrollbar-track {
-			background: $gray-lighter;
-		}
-
-		&::-webkit-scrollbar-thumb {
-		    background: #DFDFDF;
-		}
-	}
-
-	.user {
-		display: block;
-		height: 30px;
-		margin-bottom: 15px;
-
-		.profile-image {
-			@extend .inline-block;
-			vertical-align: middle;
-			width: 30px;
-			height: 30px;
-			margin-right: 10px;
-		}
-
-		.link {
-			@extend .inline-block;
-			vertical-align: middle;
-			color: $gray-darker;
-			font-size: 15px;
-			height: 30px;
-			line-height: 30px;
-
-			&:hover {
-				color: #000;
 			}
 		}
 	}

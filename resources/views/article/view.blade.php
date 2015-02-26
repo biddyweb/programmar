@@ -13,65 +13,60 @@
 		}
 	}
 ?>
-@extends('layouts/body')
-@section('content')
 
-<div class="top-loader" ng-show="loaderShow" style="width: <% pageLoaded %>%;"></div>
+@section('expandSection')
+	<div class="common-container top-section">
+		<span class="title">Enjoys</span>
+		<div class="info" ng-show="article.enjoys.length == 0">
+			<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
+		</div>
 
-@section('leftSlideOut')
-	<div class="container absolute" ng-show="showEnjoys" ng-cloak set-class-when-at-top="fixed">
-		<div class="right-container animated fadeInLeft">
-			<div class="common-container top-section">
-				<span class="title">Enjoys</span>
-				<div class="info" ng-show="article.enjoys.length == 0">
-					<span class="hide-on-mobile">No one has enjoyed this article yet.</span>
-				</div>
-
-				<div class="info" ng-show="article.enjoys.length > 0">
-					<span class="hide-on-mobile"><% article.enjoys.length %> Enjoys</span>
-				</div>
-			</div>
-			<div class="overflow-container">
-				<div class="user" ng-repeat="(key, user) in article.enjoys">
-					<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
-					<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
-				</div>
-			</div>
+		<div class="info" ng-show="article.enjoys.length > 0">
+			<span class="hide-on-mobile"><% article.enjoys.length %> Enjoys</span>
+		</div>
+	</div>
+	<div class="overflow-container">
+		<div class="user" ng-repeat="(key, user) in article.enjoys">
+			<img ng-src="<% user.user_avatar %>" class="profile-image img-circle">
+			<a class="link" href="/dev/<% user.user_slug %>"><% user.user_name %></a>
 		</div>
 	</div>
 @endsection
 
-<div class="container main-container" ng-class="{slideRight: moveLeft}">
-	<div ng-class="{faded: moveLeft}" ng-click="closeRightSection();">
-		<article class="animated fadeInUp" ng-hide="articleLoading" ng-cloak>
+@extends('layouts/body')
+@section('content')
+	<article class="animated fadeInUp" ng-hide="articleLoading" ng-cloak>
+		<div class="common-container">
 			<div class="title">{{$data->title}}</div>
-			<div class="info">
-					<a href="/dev/{{$data->userName}}"><% article.user %></a>
-			</div>
-			<article class="content wrtie-area" ng-model="article.content" contenteditable="false"></article>
-			<div class="bottom-bar">
-				<div class="f-left">
-					<a href="http://pgmr.co/{{$data->slug}}" class="gray" id="copyLink" data-clipboard-text="http://pgmr.co/{{$data->slug}}">pgmr.co/{{$data->slug}}</a>
-				</div>
-
-				<div class="f-right">
-					@if(Auth::check())
-						<a href="#" ng-click="enjoy()" class="enjoyed" ng-hide="article.enjoyed">Enjoy?</a>
-						<a href="#" ng-click="enjoy()" class="enjoyed" ng-show="article.enjoyed">Enjoyed</a>
-					@else
-						<a href="/oauth/github" class="enjoyed">Enjoy?</a>
-					@endif
-					<div class="inline-block users">
-						<span class="user" ng-repeat="(key, user) in article.enjoys | limitTo:3">
-							<a href="/dev/<% user.user_slug %>"><img ng-src="<% user.user_avatar %>" class="profile-image img-circle"></a>
-						</span>
-						<a class="more" ng-click="showEnjoySection();" ng-show="article.enjoys.length > 3">+<% article.enjoys.length - 3 %></a>
-					</div>
-				</div>
-			</div>
-		</article>
+			<div class="info"><a href="/dev/{{$data->userName}}"><% article.user %></a></div>
 		</div>
-</div>
+
+		<article class="content-write" ng-model="article.content" contenteditable="false"></article>
+
+		<div class="bottom-bar">
+			<div class="f-left">
+				<a href="http://pgmr.co/{{$data->slug}}" class="gray" id="copyLink" data-clipboard-text="http://pgmr.co/{{$data->slug}}">
+					<span>pgmr.co/{{$data->slug}}</span>
+					pgmr.co/{{$data->slug}}
+				</a>
+			</div>
+
+			<div class="f-right" id="highfives" ng-hide="loaderShow">
+				@if(Auth::check())
+					<div class="cont">
+						<a href="#" ng-hide="article.enjoyed" class="btn enjoy-btn sa" ng-cloak ng-click="enjoy()">Highfive!</a>
+
+						<a href="/dev/<% userData.username %>" ng-cloak ng-show="article.enjoyed" class="face sa inline-block" style="background-image:url(<% userData.avatar %>)"></a>
+						<span class="inline-block faces-cont">
+							<a href="/dev/<% user.user_slug %>" class="face sa inline-block" style="background-image:url(<% user.user_avatar %>)" ng-repeat="(key, user) in article.enjoys | limitTo:limit"></a>
+						</span>
+
+						<div class="num sa" ng-click="openMenu();" ng-show="article.enjoys.length > limit">+<% article.enjoys.length - limit %></div>
+					</div>
+				@endif
+			</div>
+		</div>
+	</article>
 @endsection
 
 @section('scripts')

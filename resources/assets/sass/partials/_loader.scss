@@ -1,9 +1,10 @@
-.top-loader {
+.progress-loader {
 	position: fixed;
 	top: 0px;
 	left: 0px;
 	width: 0%;
 	height: 4px;
 	transition: width .6s ease-in-out;
-	background: darken($gray-lighter, 2%);
+	background-color: $gray-lighter;
+	opacity: .2;
 }

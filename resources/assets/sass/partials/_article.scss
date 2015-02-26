@@ -1,37 +1,4 @@
-h1 {
-	@extend .Text-Bold;
-	line-height: 34px;
-}
-
-p {
-	line-height: 27px;
-}
-
-a {
-	@extend .Text-Regular;
-	color: $brand-primary;
-	text-decoration: none !important;
-	outline: none;
-
-	&:hover {
-		color: darken($brand-primary, 10%);
-	}
-
-	&.gray {
-		color: $gray;
-		&:hover {
-			color: $gray-darker;
-		}
-	}
-
-	&:focus {
-		outline: none;
-		border: none;
-	}
-}
-
 .common-container {
-
 	&.top-section {
 		padding-bottom: 44px;
 		@media (max-width: $screen-sm-min) {
@@ -65,16 +32,22 @@ a {
 	}
 
 	.title {
-		@extend .Text-Bold;
+		display: block;
+		font-weight: $font-weight-regular;
 		font-size: 16px;
 		color: $gray-darker;
 		margin: 0px;
 		outline: none;
 		border: none;
+
+		time {
+			font-size: 13px;
+			color: $gray;
+			float: right;
+		}
 	}
 
 	.info {
-		@extend .Text-Regular;
 		margin-top: 2px;
 		color: $gray;
 		font-size: 14px;
@@ -94,6 +67,10 @@ a {
 		margin-top: 22px;
 		padding-bottom: 22px;
 		border-bottom: 1px solid $gray-lighter;
+
+		&:first-child {
+			margin-top: 0px;
+		}
 
 		&:last-child {
 			padding-bottom: 0px;

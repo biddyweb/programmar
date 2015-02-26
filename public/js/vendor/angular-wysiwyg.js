@@ -253,7 +253,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
         }
 
         var getMenuTextArea = function() {
-            return '<div ng-attr-style="resize:vertical;height:{{textareaHeight || \'80px\'}}; overflow:auto" contentEditable="true" class="content wysiwyg-textarea animated fadeIn" placeholder="Start writing..." ng-model="value"></div>';
+            return '<div ng-attr-style="resize:vertical;height:{{textareaHeight || \'80px\'}}; overflow:auto" contentEditable="true" class="content-write wysiwyg-textarea animated fadeIn" placeholder="Start writing..." ng-model="value"></div>';
         }
 
         var getMenuGroup = function() {
@@ -264,13 +264,13 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
             item = item.toLowerCase().replace(' ', '-');
             switch (item) {
                 case 'bold':
-                    return '<a href="#" title="Bold" tabindex="-1" ng-click="format(\'bold\')" ng-class="{ active: isBold}">Bold</a>';
+                    return '<a href="#" title="Bold" class="boldLink" tabindex="-1" ng-click="format(\'bold\')" ng-class="{ active: isBold}">Bold</a>';
                     break;
                 case 'heading':
-                    return '<a href="#" title="Heading" tabindex="-1" ng-click="format(\'formatblock\', \'h2\')"  ng-class="{ active: isHeading}">Heading</a>';
+                    return '<a href="#" title="Heading" class="headingLink" tabindex="-1" ng-click="format(\'formatblock\', \'h2\')"  ng-class="{ active: isHeading}">Heading</a>';
                     break;
                 case 'italic':
-                    return '<a href="#" title="Italic" tabindex="-1" ng-click="format(\'italic\')" ng-class="{ active: isItalic}">Italic</a>';
+                    return '<a href="#" title="Italic" class="italicLink" tabindex="-1" ng-click="format(\'italic\')" ng-class="{ active: isItalic}">Italic</a>';
                     break;
                 case 'underline':
                     return '<button title="Underline" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'underline\')" ng-class="{ active: isUnderlined}"><i class="fa fa-underline"></i></button>';
@@ -321,7 +321,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     return '<button title="Right Justify" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'justifyright\')" ng-class="{ active: isRightJustified}"><i class="fa fa-align-right"></i></button>';
                     break;
                 case 'code':
-                    return '<a href="#" title="Code" tabindex="-1" ng-click="format(\'insertHTML\', \'<pre contenteditable></pre><br>\')"  ng-class="{ active: isPre}">Code</a>';
+                    return '<a href="#" title="Code" class="codeLink" tabindex="-1" ng-click="format(\'insertHTML\', \'<pre contenteditable></pre><br>\')"  ng-class="{ active: isPre}">Code</a>';
                     break;
                 case 'quote':
                     return '<a href="#" title="Quote" tabindex="-1" ng-click="format(\'insertHTML\', \'<blockquote></blockquote><br>\')"  ng-class="{ active: isBlockquote}">Quote</a>';
@@ -330,7 +330,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
                     return '<button title="Paragragh" tabindex="-1" type="button" unselectable="on" class="btn btn-default" ng-click="format(\'insertParagraph\')"  ng-class="{ active: isParagraph}">P</button>';
                     break;
                 case 'link':
-                    return '<a href="#" ng-show="!isLink" tabindex="-1" title="Link" ng-click="createLink()">Link</button>' +
+                    return '<a href="#" ng-show="!isLink" class="linkLink" tabindex="-1" title="Link" ng-click="createLink()">Link</button>' +
                         '<a href="#" ng-hide="!isLink" title="Unlink" ng-click="format(\'unlink\')">Unlink</button>';
                     break;
                 case 'image':
@@ -356,7 +356,7 @@ angular.module('wysiwyg.module', ['colorpicker.module'])
 
             menuHtml += getMenuStyles();
 
-            menuHtml += '<aside class="sidebar  animated fadeInLeft" ng-cloak>';
+            menuHtml += '<aside class="sidebar hidden">';
             for (var i = 0; i < menu.length; i++) {
                 menuHtml += getMenuGroup();
                 for (var j = 0; j < menu[i].length; j++) {

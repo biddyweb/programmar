@@ -1,0 +1,29 @@
+//Main wrapper for programmar
+.wrapper {
+	position: relative;
+	width: 100%;
+	max-width: $wrapper-width;
+	margin: $vertical-margin auto;
+	padding: 0px;
+
+	.sidebar {
+		width: $sidebar-width;
+		margin-right: $horizontal-margin;
+		position: fixed;
+		top: 100px;
+	}
+
+	.content {
+		position: absolute;
+		left: 0px;
+		right: 0px;
+		margin: auto;
+		width: $content-width;
+	}
+
+	.expanded-info {
+		position: fixed;
+		margin-left: 75px;
+		top: 100px;
+	}
+}

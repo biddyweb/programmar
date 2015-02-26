@@ -1,46 +1,9 @@
 #home {
-
-	.profile-img-cont {
-		text-align: right;
-		width: 120px;
-		float: right;
-		margin-top: 10px;
-
-		a:nth-child(3n+3) {
-			.profile-image {
-				margin-right: 0px;
-			}
-		}
-
-		a {
-			display: inline;
-		}
-	}
-
-	.profile-image {
-		@extend .inline-block;
-		width: 25px;
-		height: 25px;
-		margin-left: 5px;
-		margin-bottom: 5px;
-
-		&.faded {
-			opacity: 0.4;
-			&:hover {
-				opacity: 1;
-			}
-		}
-	}
-
-	.common-container.list:first-child {
-		margin-top: 0px;
-	}
-
 	.pagination-container {
 		margin-top: 25px;
 		a {
-			@extend .Text-Bold;
-			color: $gray-light;
+			font-weight: $font-weight-bold;
+			color: $gray;
 			&:hover {
 				color: $gray-dark;
 			}

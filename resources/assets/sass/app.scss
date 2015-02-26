@@ -3,22 +3,19 @@
 
 @import "config/mixins";
 @import "config/fonts";
+@import "config/base";
+@import "config/container";
 @import "config/globals";
+@import "config/type";
 
-@import "partials/navbar";
-@import "partials/type";
-@import "partials/buttons";
-@import "partials/wysiwyg";
 @import "partials/animate";
-@import "partials/cursor";
-@import "partials/footer";
-@import "partials/flags";
-@import "partials/sidebar";
 @import "partials/loader";
-@import "partials/messages";
+@import "partials/buttons";
+@import "partials/footer";
+@import "partials/sidebar";
+@import "partials/flags";
+@import "partials/article";
 
-@import "pages/landing";
-@import "pages/editor";
 @import "pages/home";
-@import "pages/profile";
-@import "pages/error";
+@import "pages/editor";
+

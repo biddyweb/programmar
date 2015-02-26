@@ -2,6 +2,13 @@
 	Mixins
 	Contains all the mixins across the site.
 */
+@mixin inline-block() {
+  display: -moz-inline-stack;
+  display: inline-block;
+  vertical-align: middle;
+  zoom: 1;
+  *display: inline;
+}
 
 @mixin font-smoothing($value: antialiased) {
   @if $value == antialiased {

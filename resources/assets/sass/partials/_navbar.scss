@@ -28,7 +28,6 @@
 	}
 
 	.navbar-brand {
-		@extend .Mono-Medium;
 		@extend .inline-block;
 		color: $gray-light;
 		font-size: 14px;
@@ -38,11 +37,10 @@
 		.logo {
 			@extend .inline-block;
 			text-indent: -9999em;
-			width: 15px;
-			height: 12px;
-			@include background-img("/img/logo.svg", 15px 12px);
+			width: $logo-width;
+			height: $logo-height;
+			@include background-img("/img/logo.svg", $logo-width $logo-height);
 		}
-
 	}
 
 	.beta-box {

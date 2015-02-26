@@ -1,0 +1,20 @@
+//Font includes
+@import url("http://fonts.googleapis.com/css?family=Karla:400,700");
+@import url("http://fonts.googleapis.com/css?family=Source+Code+Pro:400,600,700");
+
+//Base styles for the body and html
+html, body {
+	margin: 0px;
+	width: 100%;
+	min-height: 100%;
+
+	&.overflow {
+		overflow-y: scroll;
+		overflow-x: hidden;
+	}
+
+	//Apply fontsmoothening to all of the elements.
+	* {
+		@include font-smoothing();
+	}
+}

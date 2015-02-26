@@ -15,7 +15,8 @@
         '$compile',
         'ArticleApi',
         'ProgrammarMessages',
-        function ($scope, $http, $location, $window, $compile, ArticleApi, ProgrammarMessages) {
+        '$timeout',
+        function ($scope, $http, $location, $window, $compile, ArticleApi, ProgrammarMessages, $timeout) {
 
             //Default variables
             var href = $window.location.href;
@@ -163,6 +164,27 @@
                     });
                 }
             };
+
+            $scope.clickItem = function(className) {
+                $timeout(function() {
+                    angular.element('.' + className).trigger('click');
+                });
+            };
+
+            setInterval(function() {
+                angular.element('nav a[class*=-trigger]').each(function() {
+                    var $this = $(this);
+                    var className = $this.attr('class');
+                    var targetName = className.split('-');
+                    var target = targetName[0];
+
+                    if(angular.element('.' + target).hasClass('active')) {
+                        $this.addClass('active');
+                    }else{
+                        $this.removeClass('active');
+                    }
+                });
+            }, 100);
 
             //Function for saving the document
             $scope.saveDocument = function() {

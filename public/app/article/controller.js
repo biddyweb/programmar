@@ -12,7 +12,8 @@
         '$location',
         '$window',
         'ArticleApi',
-        function ($scope, $http, $location, $window, ArticleApi) {
+        'UserApi',
+        function ($scope, $http, $location, $window, ArticleApi, UserApi) {
 
             //Default variables
             var href = $window.location.href;
@@ -22,8 +23,35 @@
             $scope.pageLoaded = 30;
             $scope.loaderShow = true;
             $scope.showEnjoys = false;
+            $scope.expandMenu = false;
             $scope.moveLeft = false;
             $scope.slug = href.substr(href.lastIndexOf('/') + 1);
+
+            UserApi.query().$promise.then(function(userData) {
+                var username = '',
+                    name = '',
+                    id = '',
+                    avatar = '';
+
+                if (userData) {
+                    username = userData['username'] || '';
+                    name = userData['name'] || '';
+                    id = userData['id'] || '';
+                    avatar = userData['avatar'] || '';
+                }
+
+                $scope.userData = {
+                    'username': angular.copy(username),
+                    'name': angular.copy(name),
+                    'id': angular.copy(id),
+                    'avatar': angular.copy(avatar),
+                };
+
+                setTimeout(function() {
+                    reloadArticleData();
+                    $scope.$apply();
+                }, 300);
+            });
 
             //Collect article API stuff
             var reloadArticleData = function() {
@@ -58,6 +86,12 @@
 
                     setTimeout(function() {
                         $scope.articleLoading = false;
+                        $scope.limit = 3;
+
+                        if($scope.article.enjoyed) {
+                            $scope.limit = 2;
+                        }
+
                         $scope.pageLoaded = 100;
 
                         //Setting up clip
@@ -67,8 +101,8 @@
 
                         client.on("load", function(client) {
                           client.on("complete", function(client, args) {
-                            // `this` is the element that was clicked
-                            this.innerHTML = "Copied!";
+                            var linkElement = this;
+                            angular.element(linkElement).addClass('clicked');
                           });
                         });
 
@@ -81,18 +115,30 @@
                 });
             }
 
-            reloadArticleData();
+            $scope.openMenu = function(menuItem) {
+                $scope.expandMenu = true;
+                setTimeout(function() {
+                    $scope.$apply();
+                });
+            };
 
             $scope.enjoy = function() {
-                $http.post(apiEnjoyInteractBackendUri, {'name': $scope.slug}).
-                success(function(data, status, headers, config) {
-                    $scope.article.enjoyed = !$scope.article.enjoyed;
-                    reloadArticleData();
-                }).
-                error(function(data, status, headers, config) {
-                    $scope.article.enjoyed = $scope.article.enjoyed;
-                    reloadArticleData();
-                });
+                var $this = $('.enjoy-btn');
+                var $facesCont = angular.element('.faces-cont');
+                $facesCont.find('.face:first-child').addClass('faceSlideRight');
+                $facesCont.find('.face:nth-child(2n)').addClass('faceSlideRight');
+                $facesCont.find('.face:last-child').addClass('faceSlideRightOut');
+                $this.addClass("highfiveClick").addClass('pop');
+                var newNumber = $scope.article.enjoys.length + 1 - 3;
+
+                setTimeout(function() {
+                    $this.css('background-image', 'url(' + $scope.userData.avatar + ')');
+                    angular.element('.num').addClass('pop').text("+" + newNumber);
+
+                    $http.post(apiEnjoyInteractBackendUri, {'name': $scope.slug}).
+                    success(function(data, status, headers, config) {}).
+                    error(function(data, status, headers, config) {});
+                }, 150);
             };
 
             $scope.showEnjoySection = function() {

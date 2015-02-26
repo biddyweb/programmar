@@ -1,0 +1,26 @@
+<div class="common-container list" ng-repeat="article in articles">
+	<a href="/article/<% article.slug %>" class="title" role="title">
+		<% article.title %>
+		<time><% (article.last_updated * 1000) | date: 'dd MMM' %></time>
+	</a>
+	<div class="info">
+		<a href="/dev/<% article.user_slug %>"><% article.user_name %></a>
+		<span><% article.enjoys.length %> High-fives</span>
+	</div>
+</div>
+
+<div ng-show="currentView == 'all' && articles.length == 0">
+	No one has posted anything, there must be something wrong!
+</div>
+
+<div ng-show="currentView == 'following' && articles.length == 0">
+	You are not following anyone right now
+</div>
+
+<div ng-show="currentView == 'popular' && articles.length == 0">
+	No one is popular right now. This space could be yours!
+</div>
+
+<div ng-show="currentView == 'drafts' && articles.length == 0">
+	You currently don't have any saved drafts!
+</div>

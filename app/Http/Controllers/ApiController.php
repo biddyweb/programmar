@@ -128,6 +128,79 @@ class ApiController extends Controller {
 		return json_encode($articles);
 	}
 
+
+	//Function for collecting articles
+	public function feed($view, $page) {
+		$resultsPerPage = 10;
+		$articles = '';
+
+		if($view == 'all') {
+			$allArticles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->count();
+			$displayArticles = Article::where('published', '=', '1')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
+		}else if($view == 'following') {
+			if(!Auth::check()) {
+				return '';
+				exit();
+			}
+
+			$checkArray = array();
+			$followers = Follower::where('followed_by', '=', Auth::user()->id)->get();
+			foreach($followers as $follower) {
+				$following_user = User::find($follower->followed);
+				array_push($checkArray, $following_user->id);
+			}
+			$allArticles = Article::whereIn('user_id', $checkArray)->where('published', '=', '1')->orderBy('last_updated', 'desc')->count();
+			$displayArticles = Article::whereIn('user_id', $checkArray)->where('published', '=', '1')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
+		}else if($view == 'popular') {
+			$lastDay = time() - (24*60*60);
+			$nextDay = time() + (24*60*60);
+			$allArticles = Article::where('published', '=', '1')->where('slug', '>', $lastDay)->where('slug', '<', $nextDay)->count();
+			$displayArticles = Article::where('published', '=', '1')->where('slug', '>', $lastDay)->where('slug', '<', $nextDay)->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
+			$displayArticles = array_values(array_sort($displayArticles, function($value)
+			{
+			    return $value['enjoys'];
+			}));
+
+			$displayArticles = array_reverse($displayArticles);
+		}else if($view == 'drafts') {
+			if(!Auth::check()) {
+				return '';
+				exit();
+			}
+			$allArticles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->orderBy('last_updated', 'desc')->count();
+			$displayArticles = Article::where('user_id', '=', Auth::user()->id)->where('published', '=', '0')->orderBy('last_updated', 'desc')->skip(($page - 1) * $resultsPerPage)->take($resultsPerPage)->get();
+		}
+
+		$last = ceil($allArticles/$resultsPerPage);
+
+		if($last < 1){
+			$last = 1;
+		}
+
+		if ($page < 1) {
+		    $page = 1;
+		} else if ($page > $last) {
+		    $page = $last;
+		}
+
+		foreach($displayArticles as $article) {
+			$enjoyArray = array();
+			$enjoys = Enjoy::where('article_id', '=', $article->slug)->get();
+			foreach($enjoys as $enjoy) {
+				array_push($enjoyArray, $enjoy->user_id);
+			}
+
+			$user = User::find($article->user_id);
+			$article->user_name = $user->name;
+			$article->user_slug = $user->username;
+			$article->enjoys = $enjoyArray;
+		}
+		$return['articles'] = $displayArticles;
+		$return['lastPage'] = $last;
+
+		return json_encode($return);
+	}
+
 	//Function for collecting articles
 	public function article($article_id) {
 		$article = Article::where('slug','=', $article_id)->first();

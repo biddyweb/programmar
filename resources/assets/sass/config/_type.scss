@@ -1,0 +1,29 @@
+h1 {
+	line-height: 34px;
+}
+
+p {
+	line-height: 27px;
+}
+
+a {
+	color: $brand-primary;
+	text-decoration: none !important;
+	outline: none;
+
+	&:hover {
+		color: darken($brand-primary, 10%);
+	}
+
+	&.gray {
+		color: $gray;
+		&:hover {
+			color: $gray-darker;
+		}
+	}
+
+	&:focus {
+		outline: none;
+		border: none;
+	}
+}
