@@ -32,7 +32,7 @@
 			@yield('sidebar')
 		</aside>
 
-		<div class="expanded-info sa popIn" ng-show="expandMenu">
+		<div class="expanded-info sa popIn" ng-show="expandMenu" ng-cloak>
 			@yield('expandSection')
 		</div>
 
