@@ -129,25 +129,25 @@
                 });
             };
 
-            $scope.toggleFollowers = function() {
-                $scope.moveLeft = !$scope.moveLeft;
-                $scope.showFollowers = !$scope.showFollowers;
+            $scope.openMenu = function(menuItem) {
+                $scope.expandMenu = true;
+                setTimeout(function() {
+                    $scope.$apply();
+                });
             };
 
-            $scope.toggleFollowing = function() {
-                $scope.moveLeft = !$scope.moveLeft;
-                $scope.showFollowing = !$scope.showFollowing;
-            };
-
-            $scope.closeRightSection = function() {
-                var offset = $(".main-container").position().left;
+            $scope.closeMenu = function() {
+                var offset = angular.element(".content").position().left;
                 if(offset >= 300) {
-                    $scope.moveLeft = false;
-                    $scope.showFollowing = false;
-                    $scope.showFollowers = false;
+                    angular.element(".content").addClass('slideLeft');
+                    angular.element(".expanded-info").addClass('popOut');
+
                     setTimeout(function() {
+                        $scope.expandMenu = false;
+                        angular.element(".content").removeClass('slideLeft').removeClass('fadeInUp');
+                        angular.element(".expanded-info").removeClass('popOut');
                         $scope.$apply();
-                    }, 200);
+                    }, 400);
                 }
             };
 
@@ -160,20 +160,6 @@
                 $scope.showEnjoyContent = false;
                 $scope.showArticleContent = true;
             };
-
-            $(document).on('keydown', function(e) {
-                if(e.keyCode == 27) {
-                    e.preventDefault();
-                    if($scope.moveLeft) {
-                        $scope.moveLeft = false;
-                        $scope.showFollowing = false;
-                        $scope.showFollowers = false;
-                        setTimeout(function() {
-                            $scope.$apply();
-                        }, 200);
-                    }
-                }
-            })
 
         }
     ]);

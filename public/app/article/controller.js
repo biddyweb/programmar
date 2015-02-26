@@ -115,13 +115,6 @@
                 });
             }
 
-            $scope.openMenu = function(menuItem) {
-                $scope.expandMenu = true;
-                setTimeout(function() {
-                    $scope.$apply();
-                });
-            };
-
             $scope.enjoy = function() {
                 var $this = $('.enjoy-btn');
                 var $facesCont = angular.element('.faces-cont');
@@ -141,19 +134,25 @@
                 }, 150);
             };
 
-            $scope.showEnjoySection = function() {
-                $scope.moveLeft = !$scope.moveLeft;
-                $scope.showEnjoys = !$scope.showEnjoys;
+            $scope.openMenu = function(menuItem) {
+                $scope.expandMenu = true;
+                setTimeout(function() {
+                    $scope.$apply();
+                });
             };
 
-            $scope.closeRightSection = function() {
-                var offset = $(".main-container").position().left;
+            $scope.closeMenu = function() {
+                var offset = angular.element(".content").position().left;
                 if(offset >= 300) {
-                    $scope.moveLeft = false;
-                    $scope.showEnjoys = false;
+                    angular.element(".content").addClass('slideLeft');
+                    angular.element(".expanded-info").addClass('popOut');
+
                     setTimeout(function() {
+                        $scope.expandMenu = false;
+                        angular.element(".content").removeClass('slideLeft').removeClass('fadeInUp');
+                        angular.element(".expanded-info").removeClass('popOut');
                         $scope.$apply();
-                    }, 200);
+                    }, 400);
                 }
             };
         }

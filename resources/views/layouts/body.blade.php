@@ -36,7 +36,7 @@
 			@yield('expandSection')
 		</div>
 
-		<article class="content sa fadeInUp" role="article" ng-cloak ng-hide="loaderShow" ng-class="{slideRight: expandMenu, faded: expandMenu}">
+		<article class="content sa fadeInUp" ng-click="closeMenu();" role="article" ng-cloak ng-hide="loaderShow" ng-class="{slideRight: expandMenu, faded: expandMenu}">
 			@yield('content')
 			@if($footerInclude)
 				@include('common/footer')

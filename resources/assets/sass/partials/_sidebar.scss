@@ -68,3 +68,51 @@
 		}
 	}
 }
+
+.expanded-info {
+	width: 250px;
+
+	.overflow-container {
+		height: 300px;
+		overflow: auto;
+
+		&::-webkit-scrollbar {
+		    width: 3px;
+		}
+
+		&::-webkit-scrollbar-track {
+			background: $gray-lighter;
+		}
+
+		&::-webkit-scrollbar-thumb {
+		    background: #DFDFDF;
+		}
+	}
+
+	.user {
+		display: block;
+		height: 30px;
+		margin-bottom: 15px;
+
+		.profile-image {
+			@extend .inline-block;
+			vertical-align: middle;
+			width: 30px;
+			height: 30px;
+			margin-right: 10px;
+		}
+
+		.link {
+			@extend .inline-block;
+			vertical-align: middle;
+			color: $gray-darker;
+			font-size: 15px;
+			height: 30px;
+			line-height: 30px;
+
+			&:hover {
+				color: #000;
+			}
+		}
+	}
+}

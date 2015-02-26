@@ -19,11 +19,29 @@
 		right: 0px;
 		margin: auto;
 		width: $content-width;
+
+		&:before {
+			width: 100%; height: 100%;
+			content: "";
+			display: block;
+			position: absolute;
+			top: 0; left: 0;
+			background: rgab(#fff, 0);
+			visibility: hidden;
+			@include transition(ease-in-out background .25s);
+		}
+
+		&.faded:before {
+			visibility: visible;
+			z-index: 9999;
+			background: rgba(#fff, .8);
+			@include transition(ease-in-out background .25s);
+		}
 	}
 
 	.expanded-info {
 		position: fixed;
-		margin-left: 75px;
+		margin-left: 175px;
 		top: 100px;
 	}
 }

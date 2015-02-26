@@ -58,7 +58,7 @@
 
 						<a href="/dev/<% userData.username %>" ng-cloak ng-show="article.enjoyed" class="face sa inline-block" style="background-image:url(<% userData.avatar %>)"></a>
 						<span class="inline-block faces-cont">
-							<a href="/dev/<% user.user_slug %>" class="face sa inline-block" style="background-image:url(<% user.user_avatar %>)" ng-repeat="(key, user) in article.enjoys | limitTo:limit"></a>
+							<a href="/dev/<% user.user_slug %>" ng-hide="user.user_id == userData.id" class="face sa inline-block" style="background-image:url(<% user.user_avatar %>)" ng-repeat="(key, user) in article.enjoys | limitTo:limit"></a>
 						</span>
 
 						<div class="num sa" ng-click="openMenu();" ng-show="article.enjoys.length > limit">+<% article.enjoys.length - limit %></div>
