@@ -9,22 +9,20 @@
 			<li><a href="/write" class="btn btn-primary">Write</a></li>
 		</ul>
 
+		@if(Auth::check())
+			<ul>
+				<li><a href="/dev/{{ Auth::user()->username }}">Me</a></li>
+				<li><a href="/notifications">Notifications</a></li>
+			</ul>
+		@endif
+
 		<ul>
-			<li><a href="/#/all/1" ng-click="changePage('all')" ng-class="{active: currentView == 'all'}">All</a></li>
 			@if(Auth::check())
 				<li><a href="/#/following/1" ng-click="changePage('following')" ng-class="{active: currentView == 'following'}">Following</a></li>
 			@endif
 			<li><a href="/#/popular/1" ng-click="changePage('popular')" ng-class="{active: currentView == 'popular'}">Popular</a></li>
-			@if(Auth::check())
-				<li><a href="/#/drafts/1" ng-click="changePage('drafts')" ng-class="{active: currentView == 'drafts'}">Drafts</a></li>
-			@endif
+			<li><a href="/#/all/1" ng-click="changePage('all')" ng-class="{active: currentView == 'all'}">Latest</a></li>
 		</ul>
-
-		@if(Auth::check())
-			<ul>
-				<li><a href="/dev/{{ Auth::user()->username }}">Me</a></li>
-			</ul>
-		@endif
 
 		<ul>
 			@if(Auth::check())
