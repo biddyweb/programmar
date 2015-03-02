@@ -12,7 +12,7 @@ class CreateArticlesTable extends Migration {
 	 */
 	public function up()
 	{
-		/*Schema::create('articles', function(Blueprint $table)
+		Schema::create('articles', function(Blueprint $table)
 		{
 			$table->increments('id')->index();
 			$table->integer('user_id');
@@ -20,7 +20,7 @@ class CreateArticlesTable extends Migration {
 			$table->string('slug');
 			$table->boolean('published')->default('0');
 			$table->string('last_updated');
-		});*/
+		});
 	}
 
 	/**

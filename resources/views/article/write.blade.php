@@ -36,7 +36,7 @@
 	</div>
 
 	<input type="hidden" ng-model="article.name" ng-cloak>
-	<wysiwyg ng-model="article.content" ng-keydown="checkCharacter();" ng-change="canSaveChange();" ng-cloak enable-bootstrap-title="false" textarea-menu="<% article.customMenu %>"></wysiwyg>
+	<wysiwyg ng-model="article.content" ng-keydown="checkCharacter();" ng-change="canSaveChange();" ng-cloak enable-bootstrap-title="false" textarea-menu="<% article.customMenu %>"><div></wysiwyg>
 @endsection
 
 @section('scripts')

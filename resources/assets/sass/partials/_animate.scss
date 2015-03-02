@@ -18,22 +18,23 @@ $testDelay: 1s;
   transition-timing-function: cubic-bezier(0.405, 0.010, 0.000, 1.000);
 }
 
-// Class           Animation                                       Line
-.fadeIn            { animation-name: fadeIn; }            // 117
-.fadeOut           { animation-name: fadeOut; }           // 122
-.fadeInUp          { animation-name: fadeInUp; }          // 127
-.fadeInDown        { animation-name: fadeInDown; }        // 138
-.fadeInLeft        { animation-name: fadeInLeft; }        // 149
-.fadeInRight       { animation-name: fadeInRight; }       // 160
-.slideRight        { animation-name: slideRight; }        // 171
-.slideLeft         { animation-name: slideLeft; }         // 181
-.pop               { animation-name: pop; }               // 191
-.popIn             { animation-name: popIn; }             // 203
-.popOut            { animation-name: popOut; }            // 218
-.highfiveClick     { animation-name: highfiveClick; }     // 229
-.faceSlideRight    { animation-name: faceSlideRight; }    // 254
-.faceSlideRightOut { animation-name: faceSlideRightOut; } // 266
-.linkCopy { animation-name: linkCopy; } // 266
+// Class           Animation                                 Line
+.fadeIn               { animation-name: fadeIn; }            // 117
+.fadeOut              { animation-name: fadeOut; }           // 122
+.fadeInUp             { animation-name: fadeInUp; }          // 127
+.fadeInDown           { animation-name: fadeInDown; }        // 138
+.fadeInLeft           { animation-name: fadeInLeft; }        // 149
+.fadeInRight          { animation-name: fadeInRight; }       // 160
+.slideRight           { animation-name: slideRight; }        // 171
+.slideLeft            { animation-name: slideLeft; }         // 181
+.pop                  { animation-name: pop; }               // 191
+.popIn                { animation-name: popIn; }             // 203
+.popOut               { animation-name: popOut; }            // 218
+.highfiveClick        { animation-name: highfiveClick; }     // 229
+.highfiveClickStatic  { animation-name: highfiveClickStatic; }     // 229
+.faceSlideRight       { animation-name: faceSlideRight; }    // 254
+.faceSlideRightOut    { animation-name: faceSlideRightOut; } // 266
+.linkCopy             { animation-name: linkCopy; }          // 266
 
 
 
@@ -170,6 +171,30 @@ $testDelay: 1s;
   100% {
     width: 25px;
     transform: translate3d(29px, 0, 0) scale(1);
+    color: transparent;
+  }
+}
+
+
+@keyframes highfiveClickStatic {
+   0% {
+    width: 70px;
+    transform: scale(1);
+    color: #D9B010;
+  }
+  50% {
+    width: 25px;
+    transform: scale(1);
+    color: transparent;
+  }
+  80% {
+    width: 25px;
+    transform: scale(1.2);
+    color: transparent;
+  }
+  100% {
+    width: 25px;
+    transform: scale(1);
     color: transparent;
   }
 }

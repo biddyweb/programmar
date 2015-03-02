@@ -1,16 +1,27 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<svg width="15px" height="11px" viewBox="0 0 15 11" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
+<svg width="12px" height="13px" viewBox="0 0 12 13" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" xmlns:sketch="http://www.bohemiancoding.com/sketch/ns">
     <!-- Generator: Sketch 3.2.2 (9983) - http://www.bohemiancoding.com/sketch -->
     <title>logo</title>
     <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Internal" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
-        <g id="Article-10" sketch:type="MSArtboardGroup" transform="translate(-400.000000, -78.000000)" fill="#999999">
-            <g id="Group" sketch:type="MSLayerGroup" transform="translate(400.000000, 75.000000)">
-                <g id="header" sketch:type="MSShapeGroup">
-                    <g id="logo" transform="translate(0.000000, 3.000000)">
-                        <path d="M7.83185841,5.35249042 L10.7224736,0 L12.1239839,0 L15,5.35249042 L13.1021214,5.35249042 L11.4232287,1.93245758 L9.72973704,5.35249042 L7.83185841,5.35249042 Z" id="^"></path>
-                        <path d="M5.83036433,2.68566141 C6.42723357,3.18363996 6.72566372,3.89569206 6.72566372,4.82183908 C6.72566372,5.7479861 6.42723357,6.46003821 5.83036433,6.95801675 C5.23349508,7.4559953 4.40128744,7.70498084 3.33371643,7.70498084 L1.73236793,7.70498084 L1.73236793,11 L0,11 L0,1.93869732 L3.33371643,1.93869732 C4.40128744,1.93869732 5.23349508,2.18768286 5.83036433,2.68566141 L5.83036433,2.68566141 Z M3.33340007,6.27969349 C3.86931487,6.27969349 4.27368088,6.14454527 4.54651023,5.87424477 C4.81933958,5.60394427 4.95575221,5.25675315 4.95575221,4.83266099 C4.95575221,4.40856883 4.81933958,4.05904757 4.54651023,3.78408672 C4.27368088,3.50912587 3.86931487,3.37164751 3.33340007,3.37164751 L1.72566372,3.37164751 L1.72566372,6.27969349 L3.33340007,6.27969349 Z" id="P"></path>
+    <defs>
+        <linearGradient x1="0%" y1="32.6032966%" x2="100%" y2="32.6032966%" id="linearGradient-1">
+            <stop stop-color="#FF9855" offset="0%"></stop>
+            <stop stop-color="#FF4D00" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#FF742D" offset="0%"></stop>
+            <stop stop-color="#FF4B00" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd" sketch:type="MSPage">
+        <g id="Home" sketch:type="MSArtboardGroup" transform="translate(-363.000000, -102.000000)">
+            <g id="sidebar-+-header" sketch:type="MSLayerGroup" transform="translate(275.000000, 100.000000)">
+                <g id="header" transform="translate(41.000000, 0.000000)" sketch:type="MSShapeGroup">
+                    <g id="version-+-logo">
+                        <g id="logo" transform="translate(47.000000, 2.000000)">
+                            <path d="M12,3.9235 C12,5.18383964 11.6173924,6.15282995 10.8521658,6.8305 C10.0869392,7.50817006 9.01999285,7.847 7.65129481,7.847 L1.23953299,7.8470001 C0.594642952,7.84700011 0.0718562805,7.33384316 0.0718562811,6.68783562 L0.0718562809,6.88631294 C0.0718562815,6.24612406 0.593942876,5.72714844 1.23119503,5.72714844 L3.23353293,5.72714844 L3.23353293,1.40101812 C3.23353293,0.627257179 3.8664905,0 4.6313404,0 L7.65129481,0 C9.01999285,0 10.0869392,0.338829945 10.8521658,1.0165 C11.6173924,1.69417005 12,2.66316036 12,3.9235 Z M7.81712358,5.738 C8.48475095,5.738 8.98849859,5.56759572 9.32838161,5.22678205 C9.66826463,4.88596838 9.83820359,4.44820567 9.83820359,3.91348077 C9.83820359,3.37875587 9.66826463,2.93805515 9.32838161,2.59136538 C8.98849859,2.24467562 8.48475095,2.07133333 7.81712358,2.07133333 L5.8142515,2.07133333 L5.8142515,5.738 L7.81712358,5.738 Z" id="P" fill="url(#linearGradient-1)"></path>
+                            <rect id="Rectangle" fill="url(#linearGradient-2)" x="3.23353293" y="0" width="2.58682635" height="13" rx="2.25748503"></rect>
+                        </g>
                     </g>
                 </g>
             </g>

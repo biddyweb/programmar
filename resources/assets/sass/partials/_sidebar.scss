@@ -1,6 +1,4 @@
-//Side bar which always appears on the left
 .sidebar {
-	//Logo section
 	.logo-container {
 		text-align: right;
 		margin-bottom: 50px;
@@ -22,16 +20,33 @@
 			border-radius: $border-radius-base;
 			font-size: 9px;
 			padding: 2px 7px;
+			position: relative;
 			@include inline-block();
 
+			&:after {
+				content: '';
+				position: absolute;
+				right: -5px;
+				width: 0px;
+				height: 0px;
+				border-top: 3px solid transparent;
+				border-bottom: 3px solid transparent;
+				border-left: 5px solid $gray-light;
+				top: 50%;
+				transform: translateY(-50%);
+			}
+
 			&:hover {
-				color: $gray;
+				color: #acacac;
 				background-color: darken($gray-light, 2%);
+
+				&:after {
+					border-left-color: darken($gray-light, 2%);
+				}
 			}
 		}
 	}
 
-	//Navigation section
 	nav {
 		ul {
 			list-style: none;
@@ -53,10 +68,6 @@
 						color: $gray-darker;
 					}
 
-					&.active {
-						font-weight: $font-weight-bold;
-					}
-
 					&.brand-primary {
 						color: $brand-primary;
 						&:hover {
@@ -69,6 +80,8 @@
 	}
 }
 
+
+////////////WHEN I GET TO THIS SECITON THIS WILL BE REMOVED
 .expanded-info {
 	width: 250px;
 

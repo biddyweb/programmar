@@ -7,5 +7,6 @@
 	<div class="f-right">
 		<a href="http://twitter.com/_programmar" target="_blank">Twitter</a>
 		<a href="/terms">Terms</a>
+		<a href="/team">Team</a>
 	</div>
 </footer>

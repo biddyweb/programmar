@@ -118,20 +118,30 @@
             $scope.enjoy = function() {
                 var $this = $('.enjoy-btn');
                 var $facesCont = angular.element('.faces-cont');
-                $facesCont.find('.face:first-child').addClass('faceSlideRight');
-                $facesCont.find('.face:nth-child(2n)').addClass('faceSlideRight');
-                $facesCont.find('.face:last-child').addClass('faceSlideRightOut');
-                $this.addClass("highfiveClick").addClass('pop');
-                var newNumber = $scope.article.enjoys.length + 1 - 3;
 
-                setTimeout(function() {
-                    $this.css('background-image', 'url(' + $scope.userData.avatar + ')');
-                    angular.element('.num').addClass('pop').text("+" + newNumber);
+                if(!$scope.article.enjoyed) {
+                    if($scope.article.enjoys.length >= 3) {
+                        $facesCont.find('.face:first-child').addClass('faceSlideRight');
+                        $facesCont.find('.face:nth-child(2n)').addClass('faceSlideRight');
+                        $facesCont.find('.face:last-child').addClass('faceSlideRightOut');
+                        $this.addClass("highfiveClick").addClass('pop');
+                    }else{
+                        $this.addClass("highfiveClickStatic").addClass('pop');
+                    }
 
-                    $http.post(apiEnjoyInteractBackendUri, {'name': $scope.slug}).
-                    success(function(data, status, headers, config) {}).
-                    error(function(data, status, headers, config) {});
-                }, 150);
+                    var newNumber = $scope.article.enjoys.length + 1 - 3;
+
+                    setTimeout(function() {
+                        $this.css('background-image', 'url(' + $scope.userData.avatar + ')');
+                        angular.element('.num').addClass('pop').text("+" + newNumber);
+
+                        $http.post(apiEnjoyInteractBackendUri, {'name': $scope.slug}).
+                        success(function(data, status, headers, config) {}).
+                        error(function(data, status, headers, config) {});
+                    }, 150);
+                }else{
+                    alert('you cannot unenjoy yet');
+                }
             };
 
             $scope.openMenu = function(menuItem) {
